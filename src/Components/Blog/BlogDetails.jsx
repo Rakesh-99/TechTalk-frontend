@@ -1,12 +1,11 @@
-import * as React from 'react'
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import NavBar from '../NavBar/NavBar'
 import axios from 'axios'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { BsThreeDots } from 'react-icons/bs'
 import { toast } from 'react-toastify'
 import { AiOutlineComment } from 'react-icons/ai';
-import { BiCommentDetail, BiSolidUser } from 'react-icons/bi';
+import { BiSolidUser } from 'react-icons/bi';
 
 
 
@@ -19,6 +18,8 @@ const BlogDetails = () => {
 
 
   const [blogDetails, setBlogDetails] = useState();
+
+
 
   const [getCommentDetails, setCommentDetails] = useState([]); // Axios req 
 
@@ -40,7 +41,7 @@ const BlogDetails = () => {
 
 
   let [searchParams, setSearchParams] = useSearchParams()
-  const backendUrl = 'https://blograkesh.onrender.com/'
+  const backendUrl = 'https://blograkesh.onrender.com'
 
   const getBlogDetails = () => {
 
@@ -48,8 +49,10 @@ const BlogDetails = () => {
 
     axios
       .get(`https://blograkesh.onrender.com/getparticularblog/${id}`)
+
       .then(res => {
-        setBlogDetails(res.data.res)
+        setBlogDetails(res.data?.res)
+
       })
       .catch(err => {
         console.log(err)
@@ -57,14 +60,12 @@ const BlogDetails = () => {
   }
 
 
-  React.useEffect(() => {
-
-    getBlogDetails()
+  useEffect(() => {
 
     const id = searchParams.get('BLOG_ID');
 
     if (getCommentDetails?.length !== 0) {
-      console.log('Comment details', getCommentDetails);
+
 
       let data = getCommentDetails?.filter((item) => {
         return item.blogId == id;
@@ -99,13 +100,20 @@ const BlogDetails = () => {
   }
 
 
-  React.useEffect(() => {
+  // For rendering after every Comment : 
+
+  useEffect(() => {
 
     getUserComment();
+    getBlogDetails();
 
-  }, [])
+  }, [getCommentDetails, blogDetails])
 
-  // const post comment :
+
+
+
+
+  //  Post Comment :
 
   const postComment = () => {
 
@@ -122,7 +130,7 @@ const BlogDetails = () => {
 
           setComment('');
 
-          toast.success('Comment has been posted');
+          toast.success('Your comment has been posted')
 
         }
       }).catch((err) => {
@@ -133,19 +141,18 @@ const BlogDetails = () => {
     }
   }
 
-
   const navigate = useNavigate();
 
   const commentClick = () => {
-
     if (!username) {
 
-      toast.error('You need to login first');
+      toast.error('You must login before you can post a comment.');
       setTimeout(() => {
         navigate('/login')
-      }, 5000);
+      }, 3000);
     }
   }
+
 
 
 
@@ -153,15 +160,18 @@ const BlogDetails = () => {
     <div className='bg-gray-800 w-full'>
       <NavBar />
 
+
+      {/* Blog Image  */}
+
       <div className='flex w-full justify-center'>
-        <div className=' w-11/12 h-96 flex mt-10 bg-center'>
-          <img
-            src={backendUrl + blogDetails?.image}
-            alt=''
-            className='rounded-md w-full object-cover '
-          />
+        <div className='w-11/12 h-96 flex mt-10 bg-center border max-[500px]:h-60'>
+          <img src={backendUrl + blogDetails?.image} alt="blogImg" />
         </div>
       </div>
+
+
+
+      {/* Blog Category  */}
 
       <div className='flex justify-center my-10'>
         <span className='category  text-white font-semibold bg-indigo-800 py-1 px-2 rounded-md text-center'>
@@ -169,11 +179,16 @@ const BlogDetails = () => {
         </span>
       </div>
 
+      {/* Blog Main Heading  */}
+
       <div className='text-center'>
         <span className='text-3xl text-white font-semibold'>
           {blogDetails?.mainHeading}
         </span>
       </div>
+
+
+      {/* Three Dots in Blog Details */}
 
       <div className='flex justify-center'>
         <span className=''>
@@ -181,7 +196,10 @@ const BlogDetails = () => {
         </span>
       </div>
 
-      <div className='description px-20'>
+
+      {/* Blog Description  */}
+
+      <div className='description px-20 max-[500px]:px-5'>
         <span className='text-white'>
           <div dangerouslySetInnerHTML={{ __html: blogDetails?.description }} />
         </span>
@@ -218,11 +236,11 @@ const BlogDetails = () => {
 
           return (
 
-            <div className="w-full flex flex-col items-center h-auto ">
+            <div className="w-full flex flex-col items-center h-auto" key={values._id}>
               <div className=" my-5 w-1/2  rounded-md flex flex-row border border-gray-500 items-center px-4 py-2 gap-8">
 
 
-                <div className="">
+                <div className="" >
                   <span className='flex items-center space-x-2 text-white'><BiSolidUser className='text-2xl bg-indigo-400 rounded-2xl px-1 py-1' /><p className='text-indigo-300 font-semibold'>{values?.username}</p></span>
 
                   <div className="showComment mt-3 px-5">

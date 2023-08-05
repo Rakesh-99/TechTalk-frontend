@@ -36,21 +36,23 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-gradient-to-r from-indigo-500 to-blue-700 p-4 sticky top-0 left-0">
+        <nav className="bg-gradient-to-r from-indigo-900 to-gray-900 p-4 sticky top-0 left-0">
             <div className="flex items-center justify-between">
+                
                 <div className="flex items-center">
                     <Link to={'/'} className="text-white text-lg font-semibold">Tech Talk</Link>
                 </div>
+
                 <div className="hidden md:flex space-x-32 items-center">
 
-                    <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/'}>Home</Link></li>
+                    <li className='list-none text-white cursor-pointer hover:text-gray-300 hover:border-b-2 border-indigo-400'><Link to={'/'}>Home</Link></li>
 
-                    <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/blog'}>Blog</Link></li>
+                    <li className='list-none text-white cursor-pointer hover:text-gray-300 hover:border-b-2 border-indigo-400'><Link to={'/blog'}>Blog</Link></li>
 
                     {
-                        userrole === 'Bearer 1' && <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/blogform'}>Createblog</Link></li>
+                        userrole === 'Bearer 1' && <li className='list-none text-white cursor-pointer hover:text-gray-300 hover:border-b-2 border-indigo-400'><Link to={'/blogform'}>Createblog</Link></li>
                     }
-                    <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/about'}>About</Link></li>
+                    <li className='list-none text-white cursor-pointer hover:border-b-2 border-indigo-400 hover:text-gray-300 '><Link to={'/about'}>About</Link></li>
 
 
                     <div className="flex space-x-2">
