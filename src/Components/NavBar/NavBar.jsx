@@ -38,7 +38,7 @@ const Navbar = () => {
     return (
         <nav className="bg-gradient-to-r from-indigo-900 to-gray-900 p-4 sticky top-0 left-0">
             <div className="flex items-center justify-between">
-                
+
                 <div className="flex items-center">
                     <Link to={'/'} className="text-white text-lg font-semibold">Tech Talk</Link>
                 </div>
@@ -105,7 +105,7 @@ const Navbar = () => {
                 //  NavBar for smaller devices : 
 
                 isMenuOpen && (
-                    <div className="md:hidden mt-4 space-y-4">
+                    <div className="md:hidden mt-16  mx-10 space-y-10">
 
                         <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/'}>Home</Link></li>
                         <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/blog'}>Blog</Link></li>
