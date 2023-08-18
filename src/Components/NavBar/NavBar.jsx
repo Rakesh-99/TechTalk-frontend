@@ -119,11 +119,14 @@ const Navbar = () => {
                             accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300'><span onClick={userLogout} className='bg-red-700 px-1 py-1 rounded-sm'>Logout</span></li>
                         }
                         {
-                            !accessToken && <li className='list-none text-green-300 cursor-pointer hover:text-gray-300'><Link to={'/login'} className=' text-sm border border-green-300  px-5 py-2 rounded-sm'>Login</Link ></li>
+                            !accessToken &&
+                            <div className='flex space-x-2'>
+                                <li className='list-none text-green-300 cursor-pointer hover:text-gray-300'><Link to={'/login'} className=' text-sm border border-green-300  px-5 py-2 rounded-sm'>Login</Link ></li>
+
+                                <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/signup'} className='bg-red-700 text-sm px-5 py-2 rounded-sm' >Signup</Link ></li>
+                            </div>
                         }
-                        {
-                            !accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/signup'} className='bg-red-700 text-sm px-4 py-2 rounded-sm' >Signup</Link ></li>
-                        }
+
                     </div>
                 )
             }
