@@ -63,7 +63,7 @@ const Blog = () => {
 
         <div className="">
 
-            <div className="bg-gray-900 max-[550px]:h-screen">
+            <div className="bg-gray-900 max-[550px]:h-screen ">
                 <NavBar />
 
                 <div className="bg-black w-full text-white flex justify-evenly py-2 text-xs">
@@ -98,7 +98,7 @@ const Blog = () => {
 
                                 <div key={values?._id}>
 
-                                    <div onClick={() => handlepressReadmore(values)} className="flex flex-col space-y-5 hover:cursor-pointer hover:-translate-y-1 transition-all py-5 shadow-2xl rounded-md px-5 hover:shadow-fuchsia-500 ">
+                                    <div onClick={() => handlepressReadmore(values)} className="flex flex-col space-y-5 hover:cursor-pointer hover:-translate-y-1 transition-all py-5 shadow-sm rounded-md px-5 hover:shadow-fuchsia-700 ">
 
                                         <span className='text-fuchsia-500 py-1 px-2 rounded-md font-bold'>{values?.category}</span>
 
@@ -116,7 +116,7 @@ const Blog = () => {
                     }
                 </div>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }

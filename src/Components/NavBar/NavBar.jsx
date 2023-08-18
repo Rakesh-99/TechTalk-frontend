@@ -36,8 +36,8 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-gradient-to-r from-indigo-900 to-gray-900 p-4 sticky top-0 left-0">
-            <div className="flex items-center justify-between">
+        <nav className="bg-gray-900 p-4 sticky top-0 left-0 transition-all">
+            <div className="flex items-center justify-between ">
 
                 <div className="flex items-center">
                     <Link to={'/'} className="text-white text-lg font-semibold">Tech Talk</Link>
@@ -60,7 +60,7 @@ const Navbar = () => {
                             accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300 bg-red-700 rounded-sm py-1 px-2'><span onClick={userLogout}>Logout</span></li>
                         }
                         {
-                            !accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300 bg-green-700 active:bg-green-900 font-semibold rounded-sm py-1 px-2'><Link to={'/login'}>Login</Link ></li>
+                            !accessToken && <li className='list-none text-green-400 cursor-pointer hover:text-gray-300 border border-green-400 active:bg-green-900 font-semibold rounded-sm py-1 px-6'><Link to={'/login'}>Login</Link ></li>
                         }
                         {
                             !accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300 bg-red-500 active:bg-red-900 font-semibold rounded-sm py-1 px-2'><Link to={'/signup'}>Signup</Link ></li>
@@ -70,9 +70,9 @@ const Navbar = () => {
 
                 </div>
 
-                <div className="md:hidden">
+                <div className="md:hidden transition-all">
                     <button
-                        className="text-white focus:outline-none"
+                        className="text-white transition-all focus:outline-none"
                         onClick={toggleMenu}
                     >
                         <svg
@@ -105,7 +105,7 @@ const Navbar = () => {
                 //  NavBar for smaller devices : 
 
                 isMenuOpen && (
-                    <div className="md:hidden mt-16  mx-10 space-y-10">
+                    <div className="md:hidden mt-16  mx-10 space-y-8 transition-all">
 
                         <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/'}>Home</Link></li>
                         <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/blog'}>Blog</Link></li>
@@ -119,10 +119,10 @@ const Navbar = () => {
                             accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300'><span onClick={userLogout} className='bg-red-700 px-1 py-1 rounded-sm'>Logout</span></li>
                         }
                         {
-                            !accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/login'} className='bg-green-700 px-1 py-1 rounded-sm'>Login</Link ></li>
+                            !accessToken && <li className='list-none text-green-300 cursor-pointer hover:text-gray-300'><Link to={'/login'} className=' text-sm border border-green-300  px-5 py-2 rounded-sm'>Login</Link ></li>
                         }
                         {
-                            !accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/signup'} className='bg-red-700 px-1 py-1 rounded-sm' >Signup</Link ></li>
+                            !accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/signup'} className='bg-red-700 text-sm px-4 py-2 rounded-sm' >Signup</Link ></li>
                         }
                     </div>
                 )
