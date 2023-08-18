@@ -22,8 +22,8 @@ const Blog = () => {
     const getAllBlogs = () => {
         try {
             axios.get('https://blograkesh.onrender.com/getblogs').then((res) => {
-                setBlogInfo(res.data)
-                setBlogData(res.data)
+                setBlogInfo(res?.data)
+                setBlogData(res?.data)
 
             }).catch((err) => {
                 console.log(err);
