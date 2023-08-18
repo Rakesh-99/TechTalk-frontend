@@ -36,7 +36,7 @@ const Blog = () => {
     useEffect(() => {
         getAllBlogs();
 
-    }, [])
+    }, [blogInfo])
 
     useEffect(() => {
 
@@ -51,7 +51,7 @@ const Blog = () => {
 
             }
         }
-    }, [selectType])
+    }, [selectType, blogdata])
 
     const handlepressReadmore = (props) => {
         navigate('/blogdetails?BLOG_ID=' + props._id);
