@@ -62,9 +62,9 @@ const Blog = () => {
     return (
 
         <div className="">
+            <NavBar />
 
             <div className="bg-gray-900 max-[550px]:h-screen ">
-                <NavBar />
 
                 <div className="bg-black w-full text-white flex justify-evenly py-2 text-xs">
 
@@ -116,7 +116,10 @@ const Blog = () => {
                     }
                 </div>
             </div>
-            {/* <Footer /> */}
+
+            {/* <div className="my-10">
+                <Footer />
+            </div> */}
         </div>
     )
 }
