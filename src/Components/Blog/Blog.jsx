@@ -26,12 +26,11 @@ const Blog = () => {
                 setBlogData(res.data)
 
             }).catch((err) => {
-
+                console.log(err);
             })
         } catch (error) {
             console.log(error);
         }
-
     };
 
     useEffect(() => {
@@ -64,13 +63,14 @@ const Blog = () => {
 
         <div className="">
 
-            <div className="bg-gray-900">
+            <div className="bg-gray-900 max-[550px]:h-screen">
                 <NavBar />
 
                 <div className="bg-black w-full text-white flex justify-evenly py-2 text-xs">
 
                     {
                         // Category : 
+
                         categories?.map((categories) => {
                             return (
                                 <div className="" key={categories.id} onClick={() => setSelectType(categories?.technology)}>
@@ -121,4 +121,4 @@ const Blog = () => {
     )
 }
 
-export default Blog
+export default Blog;
