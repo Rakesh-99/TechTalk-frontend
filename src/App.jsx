@@ -26,7 +26,7 @@ const App = () => {
     return (
         <>
             <ToastContainer />
-            <Router>
+            <Router basename='/tothepoint_blog'> 
                 <Routes>
                     <Route path='/login' element={<Login />} />
                     <Route path='/signup' element={<Signup />} />
