@@ -26,7 +26,7 @@ const App = () => {
     return (
         <>
             <ToastContainer />
-            <Router> 
+            <Router>
                 <Routes>
                     <Route path='/login' element={<Login />} />
                     <Route path='/signup' element={<Signup />} />
@@ -39,7 +39,6 @@ const App = () => {
                 </Routes>
             </Router>
         </>
-
     )
 }
 
