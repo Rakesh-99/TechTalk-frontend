@@ -4,14 +4,17 @@ import categories from '../Category/Categories';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { BsArrowRight } from 'react-icons/bs';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import Footer from '../Footer/Footer'
+
 
 const Blog = () => {
 
 
     const [blogInfo, setBlogInfo] = useState([])
     const [selectType, setSelectType] = useState(categories?.[0]?.technology)
-    const [blogdata, setBlogData] = useState([])
+    const [blogdata, setBlogData] = useState([]);
+    const [loader, setLoader] = useState(false);
 
 
 
@@ -93,7 +96,7 @@ const Blog = () => {
                 <div className="blogList h-screen bg-gray-900 grid gap-10 px-10 mt-10 grid-cols-3 max-[1022px]:px-5 max-[890px]:grid-cols-2  max-[550px]:grid-cols-1 max-[550px]:h-auto">
 
                     {
-                        blogInfo?.map((values) => {
+                      blogInfo? blogInfo?.map((values) => {
                             return (
 
                                 <div key={values?._id}>
@@ -111,9 +114,12 @@ const Blog = () => {
 
                                     </div>
                                 </div>
-                            )
-                        })
+                          )
+                          
+                      })
+                        :<h1 className='text-white text-4xl'>Loading...</h1>    
                     }
+                    
                 </div>
             </div>
 

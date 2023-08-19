@@ -6,6 +6,7 @@ import { BsThreeDots } from 'react-icons/bs'
 import { toast } from 'react-toastify'
 import { AiOutlineComment } from 'react-icons/ai';
 import { BiSolidUser } from 'react-icons/bi';
+import img from '../../Assets/Meh.png'
 
 
 
@@ -52,6 +53,7 @@ const BlogDetails = () => {
 
       .then(res => {
         setBlogDetails(res.data?.res)
+
 
       })
       .catch(err => {
@@ -107,7 +109,7 @@ const BlogDetails = () => {
     getUserComment();
     getBlogDetails();
 
-  }, [getCommentDetails, blogDetails])
+  }, [getCommentDetails])
 
 
 
@@ -163,9 +165,11 @@ const BlogDetails = () => {
 
       {/* Blog Image  */}
 
+      
+
       <div className='flex w-full justify-center'>
-        <div className='w-11/12 h-96 flex mt-10 bg-center border max-[500px]:h-60'>
-          <img src={backendUrl + blogDetails?.image} alt="blogImg" />
+        <div className='w-11/12 h-96 flex mt-10 bg-center border border-gray-600 max-[500px]:h-60'>
+          <img src={backendUrl+blogDetails?.image} alt="blogImg" />
         </div>
       </div>
 
