@@ -165,11 +165,11 @@ const BlogDetails = () => {
 
       {/* Blog Image  */}
 
-      
+
 
       <div className='flex w-full justify-center'>
         <div className='w-11/12 h-96 flex mt-10 bg-center border border-gray-600 max-[500px]:h-60'>
-          <img src={backendUrl+blogDetails?.image} alt="blogImg" />
+          <img src={backendUrl + blogDetails?.image} alt="blogImg" />
         </div>
       </div>
 
@@ -186,7 +186,7 @@ const BlogDetails = () => {
       {/* Blog Main Heading  */}
 
       <div className='text-center'>
-        <span className='text-3xl text-white font-semibold'>
+        <span className='text-3xl text-white font-semibold max-[600px]:text-xl'>
           {blogDetails?.mainHeading}
         </span>
       </div>
@@ -203,7 +203,7 @@ const BlogDetails = () => {
 
       {/* Blog Description  */}
 
-      <div className='description px-20 max-[500px]:px-5'>
+      <div className='description px-20 max-[600px]:px-10'>
         <span className='text-gray-200 text-justify'>
           <div dangerouslySetInnerHTML={{ __html: blogDetails?.description }} />
         </span>
