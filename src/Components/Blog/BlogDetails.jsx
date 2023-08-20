@@ -204,7 +204,7 @@ const BlogDetails = () => {
       {/* Blog Description  */}
 
       <div className='description px-20 max-[500px]:px-5'>
-        <span className='text-white'>
+        <span className='text-gray-200 text-justify'>
           <div dangerouslySetInnerHTML={{ __html: blogDetails?.description }} />
         </span>
       </div>

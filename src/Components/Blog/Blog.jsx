@@ -99,7 +99,7 @@ const Blog = () => {
                         blogInfo.map((values) => {
                             return (
 
-                                <div key={values?._id}>
+                                <div key={values?._id} >
 
                                     <div onClick={() => handlepressReadmore(values)} className="flex flex-col space-y-5 hover:cursor-pointer hover:-translate-y-1 transition-all py-5 shadow-sm rounded-md px-5 hover:shadow-fuchsia-700 ">
 
