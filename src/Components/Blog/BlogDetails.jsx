@@ -15,34 +15,34 @@ import img from '../../Assets/Meh.png'
 
 const BlogDetails = () => {
 
+  const backendUrl = 'https://blograkesh.onrender.com/'
+
+
   const username = sessionStorage.getItem('username');
+  const navigate = useNavigate();
 
 
   const [blogDetails, setBlogDetails] = useState();
 
-
-
   const [getCommentDetails, setCommentDetails] = useState([]); // Axios req 
-
 
   const [commentInfo, setCommentInfo] = useState([]);
 
   const [comment, setComment] = useState();
 
-
-
-
-
-
-
-
-
-
-
-
-
   let [searchParams, setSearchParams] = useSearchParams()
-  const backendUrl = 'https://blograkesh.onrender.com'
+
+
+
+
+
+
+
+
+
+
+
+
 
   const getBlogDetails = () => {
 
@@ -62,20 +62,13 @@ const BlogDetails = () => {
   }
 
 
+  // Rendering BlogDetails ..
+
   useEffect(() => {
 
-    const id = searchParams.get('BLOG_ID');
+    getBlogDetails();
 
-    if (getCommentDetails?.length !== 0) {
-
-
-      let data = getCommentDetails?.filter((item) => {
-        return item.blogId == id;
-      })
-
-      setCommentInfo(data);
-    }
-  }, [searchParams.get('BLOG_ID'), getCommentDetails]);
+  }, [searchParams.get('BLOG_ID')]);
 
 
 
@@ -94,7 +87,7 @@ const BlogDetails = () => {
 
 
       }).catch((err) => {
-        console.log(err);
+        // console.log(err);
       })
     } catch (error) {
       console.log(error);
@@ -106,10 +99,20 @@ const BlogDetails = () => {
 
   useEffect(() => {
 
-    getUserComment();
-    getBlogDetails();
+    const id = searchParams.get('BLOG_ID');
 
-  }, [getCommentDetails])
+    if (getCommentDetails?.length !== 0) {
+
+      let data = getCommentDetails?.filter((item) => {
+        return item.blogId == id;
+      })
+
+      setCommentInfo(data);
+    }
+    getUserComment();
+
+
+  }, [getCommentDetails]);
 
 
 
@@ -143,7 +146,6 @@ const BlogDetails = () => {
     }
   }
 
-  const navigate = useNavigate();
 
   const commentClick = () => {
     if (!username) {
@@ -168,10 +170,11 @@ const BlogDetails = () => {
 
 
       <div className='flex w-full justify-center'>
-        <div className='w-11/12 h-96 flex mt-10 bg-center border border-gray-600 max-[500px]:h-60'>
-          <img src={backendUrl + blogDetails?.image} alt="blogImg" />
+        <div className='w-11/12 h-96  flex mt-10 bg-center border border-gray-700 max-[500px]:h-60'>
+          <img src={backendUrl + blogDetails?.image} alt="blogImg" crossOrigin='anonymous' className='w-full' />
         </div>
       </div>
+
 
 
 
@@ -221,7 +224,7 @@ const BlogDetails = () => {
 
           <div className="w-full flex justify-center items-center mt-10">
             <div className="">
-              <label htmlFor="" className='text-white font-semibold py-5'>{ }</label>
+              <label htmlFor="" className='text-white font-semibold py-5'></label>
               <input type="text" placeholder='Drop a comment' className='w-96 py-2 px-2 rounded-sm' onChange={(e) => setComment(e.target.value)} value={comment} />
             </div>
 

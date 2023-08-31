@@ -14,7 +14,6 @@ const Blog = () => {
     const [blogInfo, setBlogInfo] = useState([])
     const [selectType, setSelectType] = useState(categories?.[0]?.technology)
     const [blogdata, setBlogData] = useState([]);
-    const [loader, setLoader] = useState('Loading');
 
 
 
@@ -36,10 +35,14 @@ const Blog = () => {
         }
     };
 
+    // For rendering all Blog post ..
+
     useEffect(() => {
         getAllBlogs();
 
     }, [blogInfo])
+
+
 
     useEffect(() => {
 
@@ -54,8 +57,11 @@ const Blog = () => {
 
             }
         }
-    }, [selectType, blogdata, blogInfo])
+    }, [selectType, blogdata, blogInfo]);
 
+
+
+    // Action triggers when click on particular blog post
     const handlepressReadmore = (props) => {
         navigate('/blogdetails?BLOG_ID=' + props._id);
     }
@@ -104,6 +110,7 @@ const Blog = () => {
                                     <div onClick={() => handlepressReadmore(values)} className="flex flex-col space-y-5 hover:cursor-pointer hover:-translate-y-1 transition-all py-5 shadow-sm rounded-md px-5 hover:shadow-fuchsia-700 ">
 
                                         <span className='text-fuchsia-500 py-1 px-2 rounded-md font-bold'>{values?.category}</span>
+
 
                                         <h1 className='text-white text-3xl max-[1022px]:text-2xl'>{values?.mainHeading}</h1>
 
