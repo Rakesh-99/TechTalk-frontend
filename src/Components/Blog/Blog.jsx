@@ -23,7 +23,7 @@ const Blog = () => {
 
     const getAllBlogs = () => {
         try {
-            axios.get('https://blograkesh.onrender.com/getblogs').then((res) => {
+            axios.get('https://blograkesh.onrender.com/getblogs', { timeout: 10000 }).then((res) => {
                 setBlogInfo(res?.data)
                 setBlogData(res?.data)
 

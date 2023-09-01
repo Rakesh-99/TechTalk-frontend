@@ -49,7 +49,7 @@ const BlogDetails = () => {
     const id = searchParams.get('BLOG_ID')
 
     axios
-      .get(`https://blograkesh.onrender.com/getparticularblog/${id}`)
+      .get(`https://blograkesh.onrender.com/getparticularblog/${id}`, {timeout:10000})
 
       .then(res => {
         setBlogDetails(res.data?.res)
@@ -81,7 +81,7 @@ const BlogDetails = () => {
   const getUserComment = () => {
 
     try {
-      axios.get('https://blograkesh.onrender.com/comment').then((res) => {
+      axios.get('https://blograkesh.onrender.com/comment',{timeout:10000}).then((res) => {
 
         setCommentDetails(res.data.res);
 
@@ -171,7 +171,7 @@ const BlogDetails = () => {
 
       <div className='flex w-full justify-center'>
         <div className='w-11/12 h-96  flex mt-10 bg-center border border-gray-700 max-[500px]:h-60'>
-          <img src={backendUrl + blogDetails?.image} alt="blogImg" crossOrigin='anonymous' className='w-full' />
+          <img src={backendUrl + blogDetails?.image} alt="blogImg" crossOrigin='anonymous' fetchpriority='high' decoding='async' loading='lazy' className='w-full' />
         </div>
       </div>
 
