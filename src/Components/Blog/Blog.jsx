@@ -21,19 +21,39 @@ const Blog = () => {
 
     const navigate = useNavigate();
 
-    const getAllBlogs = () => {
-        try {
-            axios.get('https://blograkesh.onrender.com/getblogs', { timeout: 10000 }).then((res) => {
-                setBlogInfo(res?.data)
-                setBlogData(res?.data)
+    // const getAllBlogs = () => {
+    //     try {
+    //         axios.get('https://blograkesh.onrender.com/getblogs', { timeout: 10000 }).then((res) => {
+    //             setBlogInfo(res?.data)
+    //             setBlogData(res?.data)
 
-            }).catch((err) => {
-                console.log(err);
+    //         }).catch((err) => {
+    //             console.log(err);
+    //         })
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
+    const getAllBlogs = () => {
+        axios.get('https://blograkesh.onrender.com/getblogs', { timeout: 10000 })
+            .then((res) => {
+                setBlogInfo(res?.data);
+                setBlogData(res?.data);
             })
-        } catch (error) {
-            console.log(error);
-        }
+            .catch((err) => {
+                if (axios.isCancel(err)) {
+                    // Request was canceled (optional handling)
+                    console.log('Request canceled:', err.message);
+                } else {
+                    // Handle other Axios errors
+                    console.error('Axios error:', err.message);
+                    if (err.response) {
+                        console.error('Axios response:', err.response.status, err.response.data);
+                    }
+                }
+            });
     };
+
 
     // For rendering all Blog post ..
 
