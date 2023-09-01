@@ -81,12 +81,12 @@ const Blog = () => {
 
     return (
 
-        <div className="">
+        <div className="relative">
             <NavBar />
 
-            <div className="bg-gray-900 max-[550px]:h-screen pb-10 relative top-0 left-0">
+            <div className="bg-gray-900 max-[550px]:h-screen">
 
-                <div className="bg-black w-full text-white flex justify-evenly py-2 text-xs">
+                <div className="bg-black w-full text-white flex justify-evenly p-5 sticky top-0 z-10 text-xs">
 
                     {
                         // Category : 
@@ -117,7 +117,7 @@ const Blog = () => {
                             return (
 
 
-                                <div key={values?._id} className='border-b-2 hover:-translate-y-1 transition-all hover:shadow-fuchsia-700 shadow-2xl ' >
+                                <div key={values?._id} className='border-b-2 hover:-translate-y-1 transition-all hover:shadow-fuchsia-700 shadow-2xl relative' >
 
 
                                     <div onClick={() => handlepressReadmore(values)} className="flex flex-col space-y-5 hover:cursor-pointer  py-5  px-5  ">
@@ -140,9 +140,9 @@ const Blog = () => {
                     }
 
                 </div>
-            </div>
+                <Footer />
 
-            <Footer />
+            </div>
         </div>
     )
 }

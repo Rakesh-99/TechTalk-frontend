@@ -36,7 +36,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-gray-900 p-4 sticky top-0 left-0 transition-all">
+        <nav className="bg-indigo-900 p-4 sticky top-0 left-0 transition-all">
             <div className="flex items-center justify-between ">
 
                 <div className="flex items-center">
@@ -60,11 +60,11 @@ const Navbar = () => {
                             accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300 bg-red-700 rounded-sm py-1 px-2'><span onClick={userLogout}>Logout</span></li>
                         }
                         {
-                            !accessToken && <li className='list-none text-green-400 cursor-pointer hover:text-gray-300 border border-green-400 active:bg-green-900 font-semibold rounded-sm py-1 px-6'><Link to={'/login'}>Login</Link ></li>
+                            !accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300 border active:bg-green-900 font-semibold rounded-sm p-1 bg-yellow-600 px-6'><Link to={'/login'}>Login</Link ></li>
                         }
-                        {
+                        {/* {
                             !accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300 bg-red-500 active:bg-red-900 font-semibold rounded-sm py-1 px-2'><Link to={'/signup'}>Signup</Link ></li>
-                        }
+                        } */}
                     </div>
 
 
