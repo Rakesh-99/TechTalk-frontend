@@ -49,7 +49,7 @@ const BlogDetails = () => {
     const id = searchParams.get('BLOG_ID')
 
     axios
-      .get(`https://blograkesh.onrender.com/getparticularblog/${id}`, {timeout:10000})
+      .get(`https://blograkesh.onrender.com/getparticularblog/${id}`, { timeout: 10000 })
 
       .then(res => {
         setBlogDetails(res.data?.res)
@@ -81,7 +81,7 @@ const BlogDetails = () => {
   const getUserComment = () => {
 
     try {
-      axios.get('https://blograkesh.onrender.com/comment',{timeout:10000}).then((res) => {
+      axios.get('https://blograkesh.onrender.com/comment', { timeout: 10000 }).then((res) => {
 
         setCommentDetails(res.data.res);
 
@@ -206,8 +206,8 @@ const BlogDetails = () => {
 
       {/* Blog Description  */}
 
-      <div className='description px-20 max-[600px]:px-10'>
-        <span className='text-gray-200 text-justify'>
+      <div className='description px-20 max-[600px]:px-5'>
+        <span className='text-gray-200 text-justify max-[600px]:text-sm  max-[600px]:leading-8'>
           <div dangerouslySetInnerHTML={{ __html: blogDetails?.description }} />
         </span>
       </div>
