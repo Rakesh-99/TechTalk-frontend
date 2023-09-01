@@ -14,7 +14,8 @@ const Blog = () => {
     const [blogInfo, setBlogInfo] = useState([])
     const [selectType, setSelectType] = useState(categories?.[0]?.technology)
     const [blogdata, setBlogData] = useState([]);
-    const [loader, setLoader] = useState(true);
+    const cancelTokenSource = axios.CancelToken.source();
+
 
 
 
@@ -30,18 +31,9 @@ const Blog = () => {
                 setBlogData(res?.data);
             })
             .catch((err) => {
-                if (axios.isCancel(err)) {
-                    // Request was canceled (optional handling)
-                    console.log('Request canceled:', err.message);
-                } else {
-                    // Handle other Axios errors
-                    console.error('Axios error:', err.message);
-                    if (err.response) {
-                        console.error('Axios response:', err.response.status, err.response.data);
-                    }
+                if (err.response) {
+                    console.log(err.response.status, err.response.data);
                 }
-            }).finally(() => {
-                setLoader(false);
             })
     };
 
@@ -50,8 +42,9 @@ const Blog = () => {
 
     useEffect(() => {
         getAllBlogs();
+    }, []);
 
-    }, [blogInfo])
+
 
 
 
@@ -65,7 +58,6 @@ const Blog = () => {
                     return el.category == selectType
                 })
                 setBlogInfo(blogs)
-
             }
         }
     }, [selectType, blogdata, blogInfo]);

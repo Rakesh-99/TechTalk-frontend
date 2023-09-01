@@ -120,10 +120,10 @@ const Navbar = () => {
                         }
                         {
                             !accessToken &&
-                            <div className='flex space-x-2'>
-                                <li className='list-none text-green-300 cursor-pointer hover:text-gray-300'><Link to={'/login'} className=' text-sm border border-green-300  px-5 py-2 rounded-sm'>Login</Link ></li>
+                            <div className='flex'>
+                                    <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/login'} className=' text-sm border bg-yellow-600 px-5  py-1 rounded-sm'>Login</Link ></li>
 
-                                <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/signup'} className='bg-red-700 text-sm px-5 py-2 rounded-sm' >Signup</Link ></li>
+                                {/* <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/signup'} className='bg-red-700 text-sm px-5 py-2 rounded-sm' >Signup</Link ></li> */}
                             </div>
                         }
 
