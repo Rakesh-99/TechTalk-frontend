@@ -127,23 +127,19 @@ const BlogDetails = () => {
       blogId: searchParams.get('BLOG_ID'),
       comment: comment
     }
-    try {
 
-      axios.post('https://blograkesh.onrender.com/comment', commentData).then((res) => {
 
-        if (res.status === 200) {
+    axios.post('https://blograkesh.onrender.com/comment', commentData).then((res) => {
 
-          setComment('');
+      if (res.status === 200) {
+        toast.success('Your comment has been posted')
 
-          toast.success('Your comment has been posted')
-
-        }
-      }).catch((err) => {
-        toast.error('Error occurred while posting comment')
-      })
-    } catch (error) {
-      toast.error('Internal server error');
-    }
+        setComment('');
+      }
+    }).catch((err) => {
+      toast.error('Error occurred while posting comment')
+      console.log(err);
+    })
   }
 
 
@@ -171,7 +167,7 @@ const BlogDetails = () => {
 
       <div className='flex w-full justify-center'>
         <div className='w-11/12 h-96  flex mt-10 bg-center border border-gray-700 max-[500px]:h-60'>
-          <img src={backendUrl + blogDetails?.image} alt="blogImg" crossOrigin='anonymous' fetchpriority='high' decoding='async' loading='lazy' className='w-full' />
+          <img src={backendUrl + blogDetails?.image} alt="blogImage" crossOrigin='anonymous' fetchpriority='high' decoding='async' loading='lazy' className='w-full' />
         </div>
       </div>
 

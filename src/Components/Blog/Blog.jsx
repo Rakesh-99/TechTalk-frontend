@@ -14,7 +14,7 @@ const Blog = () => {
     const [blogInfo, setBlogInfo] = useState([])
     const [selectType, setSelectType] = useState(categories?.[0]?.technology)
     const [blogdata, setBlogData] = useState([]);
-    const cancelTokenSource = axios.CancelToken.source();
+  
 
 
 
@@ -25,6 +25,7 @@ const Blog = () => {
 
 
     const getAllBlogs = () => {
+
         axios.get('https://blograkesh.onrender.com/getblogs', { timeout: 10000 })
             .then((res) => {
                 setBlogInfo(res?.data);
@@ -76,9 +77,9 @@ const Blog = () => {
         <div className="relative">
             <NavBar />
 
-            <div className="bg-gray-900 max-[550px]:h-screen">
-
-                <div className="bg-black w-full text-white flex justify-evenly p-5 sticky top-0 z-10 text-xs">
+            <div className="bg-gray-900 max-[550px]:h-screen h-auto">
+ 
+                <div className="bg-black w-full text-white flex justify-evenly p-5 sticky top-2 z-10 text-xs">
 
                     {
                         // Category : 
@@ -102,19 +103,18 @@ const Blog = () => {
                     </div>
                 </div>
 
-                <div className="blogList h-screen bg-gray-900 grid gap-10 px-10 mt-10 grid-cols-3 max-[1022px]:px-5 max-[890px]:grid-cols-2  max-[550px]:grid-cols-1 max-[550px]:h-auto">
+                <div className="blogList  bg-gray-900 grid gap-10 px-10 mt-10 mb-20  grid-cols-3 max-[1022px]:px-5 max-[890px]:grid-cols-2  max-[550px]:grid-cols-1 max-[550px]:h-auto">
 
                     {
                         blogInfo.map((values) => {
                             return (
 
-
-                                <div key={values?._id} className='border-b-2 hover:-translate-y-1 transition-all hover:shadow-fuchsia-700 shadow-2xl relative' >
+                                <div key={values?._id} className='border-b-2 hover:-translate-y-1 transition-all hover:shadow-fuchsia-700 shadow-2xl ' >
 
 
                                     <div onClick={() => handlepressReadmore(values)} className="flex flex-col space-y-5 hover:cursor-pointer  py-5  px-5  ">
 
-                                        <span className='text-fuchsia-500 py-1 px-2 rounded-md font-bold'>{values?.category}</span>
+                                        <span className='text-violet-500 bg-gray-800 py-1 px-2 rounded-md font-bold'>{values?.category}</span>
 
 
                                         <h1 className='text-white font-bold text-2xl max-[1022px]:text-2xl'>{values?.mainHeading}</h1>
@@ -122,7 +122,7 @@ const Blog = () => {
 
                                         <span dangerouslySetInnerHTML={{ __html: values?.description?.slice(0, 200) }} className=' text-gray-300' />
                                     </div>
-                                    <span className='text-white flex items-center px-5 space-x-3'><p className='text-fuchsia-500'>Learn more </p><BsArrowRight className='text-fuchsia-500' /></span>
+                                    <span className='text-white flex items-center px-5 space-x-3'><p className='text-violet-500'>Learn more </p><BsArrowRight className='text-violet-500' /></span>
 
                                 </div>
                             )
