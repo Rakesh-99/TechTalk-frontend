@@ -64,6 +64,7 @@ const BlogDetails = () => {
 
   // Rendering BlogDetails ..
 
+
   useEffect(() => {
 
     getBlogDetails();
@@ -75,25 +76,22 @@ const BlogDetails = () => {
 
 
 
-
   // getUser User comment :
 
   const getUserComment = () => {
 
-    try {
-      axios.get('https://blograkesh.onrender.com/comment', { timeout: 10000 }).then((res) => {
+    axios.get('https://blograkesh.onrender.com/comment', { timeout: 10000 }).then((res) => {
 
-        setCommentDetails(res.data.res);
+      setCommentDetails(res.data.res);
 
-
-      }).catch((err) => {
-        // console.log(err);
-      })
-    } catch (error) {
-      console.log(error);
-    }
+    }).catch((err) => {
+      console.log(err);
+    })
   }
 
+
+  useEffect(() => {
+  }, [])
 
   // For rendering after every Comment : 
 
@@ -127,8 +125,6 @@ const BlogDetails = () => {
       blogId: searchParams.get('BLOG_ID'),
       comment: comment
     }
-
-
     axios.post('https://blograkesh.onrender.com/comment', commentData).then((res) => {
 
       if (res.status === 200) {

@@ -37,7 +37,7 @@ const Navbar = () => {
 
     return (
         <nav className="bg-gradient-to-r from-blue-900 to-violet-700 p-4 sticky top-0 left-0 transition-all">
-            <div className="flex items-center justify-between ">
+            <div className="flex items-center justify-between transition-all ">
 
                 <div className="flex items-center">
                     <Link to={'/'} className="text-white text-lg font-semibold">Tech Talk</Link>
