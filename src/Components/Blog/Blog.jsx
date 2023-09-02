@@ -82,7 +82,7 @@ const Blog = () => {
 
             <div className="bg-gray-900 max-[550px]:h-screen h-auto">
 
-                <div className="bg-black w-full text-white flex justify-evenly p-5 sticky top-1 z-10 text-xs">
+                <div className="bg-black w-full text-white flex justify-evenly p-5 sticky top-2 z-10 text-xs">
 
                     {
                         // Category : 
