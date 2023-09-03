@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import Navbar from '../NavBar/NavBar'
 
 const Login = () => {
+
   const navigate = useNavigate()
 
   const initialState = {
@@ -44,6 +45,7 @@ const Login = () => {
       toast.error('Password required minimum 6 char')
       return false
     } else {
+
       axios
         .post('https://blograkesh.onrender.com/login', loginInfo)
         .then(res => {
@@ -66,7 +68,7 @@ const Login = () => {
           }
         })
         .catch(err => {
-          toast.error(err.message);
+          toast.error(err.response.data.res);
         })
     }
   }

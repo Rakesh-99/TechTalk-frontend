@@ -63,7 +63,7 @@ const Blog = () => {
                 setBlogInfo(blogs)
             }
         }
-        
+
     }, [categoryType, blogdata]);
 
 

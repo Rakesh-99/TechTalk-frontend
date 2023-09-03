@@ -24,6 +24,7 @@ const BlogDetails = () => {
 
   const [blogDetails, setBlogDetails] = useState();
 
+
   const [getCommentDetails, setCommentDetails] = useState([]); // Axios req 
 
   const [commentInfo, setCommentInfo] = useState([]);
@@ -53,7 +54,6 @@ const BlogDetails = () => {
 
       .then(res => {
         setBlogDetails(res.data?.res)
-
 
       })
       .catch(err => {
@@ -90,8 +90,6 @@ const BlogDetails = () => {
   }
 
 
-  useEffect(() => {
-  }, [])
 
   // For rendering after every Comment : 
 
