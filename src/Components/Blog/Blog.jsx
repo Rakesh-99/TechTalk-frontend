@@ -29,21 +29,25 @@ const Blog = () => {
 
 
     useEffect(() => {
+        setLoader('Loading...'); // Set the loader to indicate loading
         const getAllBlogs = () => {
             axios.get('https://blograkesh.onrender.com/getblogs', { timeout: 10000 })
                 .then((res) => {
                     setBlogInfo(res?.data);
                     setBlogData(res?.data);
+                    setLoader(null); // Set the loader to null when data is loaded
                 })
                 .catch((err) => {
                     if (err.response) {
                         console.log(err.response.status, err.response.data);
                     }
+                    setLoader('Error occurred while fetching data'); // Handle errors and set an appropriate message
                 });
         };
 
         getAllBlogs();
     }, []);
+
 
 
     useEffect(() => {
@@ -100,28 +104,33 @@ const Blog = () => {
                 <div className="blogList  bg-gray-900 grid gap-10 px-10 mt-10 pb-20  grid-cols-3 max-[1022px]:px-5 max-[890px]:grid-cols-2  max-[550px]:grid-cols-1 max-[550px]:h-auto">
 
                     {
-                        blogInfo && blogInfo?.map((values) => {
+                        blogInfo.length === 0 ?
+                            <div className="h-screen w-full justify-center flex ">
+                                <p className='text-white text-center text-2xl w-full flex justify-center font-semibold'>Loading...</p>
+                            </div> :
 
-                            return (
+                            blogInfo && blogInfo?.map((values) => {
 
-                                <div key={values?._id} className='border-b-2 hover:-translate-y-1 transition-all hover:shadow-violet-700 shadow-2xl ' >
+                                return (
 
-
-                                    <div onClick={() => handlepressReadmore(values)} className="flex flex-col space-y-5 hover:cursor-pointer  py-5  px-5  ">
-
-                                        <span className='text-violet-400 bg-gray-800 w-24 flex justify-center items-center py-1 px-2 rounded-md font-bold'>{values?.category}</span>
-
-
-                                        <h1 className='text-white font-bold text-2xl max-[1022px]:text-2xl'>{values?.mainHeading}</h1>
+                                    <div key={values?._id} className='border-b-2 hover:-translate-y-1 transition-all hover:shadow-violet-700 shadow-2xl ' >
 
 
-                                        <span dangerouslySetInnerHTML={{ __html: values?.description?.slice(0, 200) }} className=' text-gray-300' />
+                                        <div onClick={() => handlepressReadmore(values)} className="flex flex-col space-y-5 hover:cursor-pointer  py-5  px-5  ">
+
+                                            <span className='text-violet-400 bg-gray-800 w-24 flex justify-center items-center py-1 px-2 rounded-md font-bold'>{values?.category}</span>
+
+
+                                            <h1 className='text-white font-bold text-2xl max-[1022px]:text-2xl'>{values?.mainHeading}</h1>
+
+
+                                            <span dangerouslySetInnerHTML={{ __html: values?.description?.slice(0, 200) }} className=' text-gray-300' />
+                                        </div>
+                                        <span className='text-white flex items-center px-5 space-x-3'><p className='text-violet-400'>Learn more </p><BsArrowRight className='text-violet-400' /></span>
                                     </div>
-                                    <span className='text-white flex items-center px-5 space-x-3'><p className='text-violet-400'>Learn more </p><BsArrowRight className='text-violet-400' /></span>
-                                </div>
-                            )
+                                )
 
-                        })
+                            })
 
                     }
 
