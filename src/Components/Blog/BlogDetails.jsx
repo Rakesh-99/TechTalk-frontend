@@ -51,7 +51,7 @@ const BlogDetails = () => {
     const id = searchParams.get('BLOG_ID')
 
     axios
-      .get(`https://rakeshblog.onrender.com/getparticularblog/${id}`, { timeout: 10000 })
+      .get(`https://blograkesh.onrender.com/getparticularblog/${id}`, { timeout: 10000 })
 
       .then(res => {
         setBlogDetails(res.data?.res)
@@ -81,7 +81,7 @@ const BlogDetails = () => {
 
   const getUserComment = () => {
 
-    axios.get('https://rakeshblog.onrender.com/comment', { timeout: 10000 }).then((res) => {
+    axios.get('https://blograkesh.onrender.com/comment', { timeout: 10000 }).then((res) => {
 
       setCommentDetails(res.data.res);
 
@@ -124,7 +124,7 @@ const BlogDetails = () => {
       blogId: searchParams.get('BLOG_ID'),
       comment: comment
     }
-    axios.post('https://rakeshblog.onrender.com/comment', commentData).then((res) => {
+    axios.post('https://blograkesh.onrender.com/comment', commentData).then((res) => {
 
       if (res.status === 200) {
         toast.success('Your comment has been posted')

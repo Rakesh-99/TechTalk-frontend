@@ -15,8 +15,6 @@ const Blog = () => {
     const [categoryType, setCategoryType] = useState(categories?.[0]?.technology)
     const [blogdata, setBlogData] = useState([]);
     const [loader, setLoader] = useState('Loading...');
-    console.log(blogdata, 'blogDta');
-    console.log(blogInfo, 'blogInfo');
 
 
 
@@ -32,7 +30,7 @@ const Blog = () => {
 
     const getAllBlogs = () => {
 
-        axios.get('https://rakeshblog.onrender.com/getblogs', { timeout: 10000 })
+        axios.get('https://blograkesh.onrender.com/getblogs', { timeout: 10000 })
             .then((res) => {
                 setBlogInfo(res?.data);
                 setBlogData(res?.data);
@@ -66,7 +64,7 @@ const Blog = () => {
             }
         }
 
-    }, [categoryType, blogdata]);
+    }, [categoryType, blogdata, blogInfo]);
 
 
 
