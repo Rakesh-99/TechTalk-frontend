@@ -15,6 +15,9 @@ const Blog = () => {
     const [categoryType, setCategoryType] = useState(categories?.[0]?.technology)
     const [blogdata, setBlogData] = useState([]);
     const [loader, setLoader] = useState('Loading...');
+    console.log(blogdata, 'blogDta');
+    console.log(blogInfo, 'blogInfo');
+
 
 
 
@@ -63,7 +66,7 @@ const Blog = () => {
             }
         }
 
-    }, [categoryType, blogdata, blogInfo]);
+    }, [categoryType, blogdata]);
 
 
 
