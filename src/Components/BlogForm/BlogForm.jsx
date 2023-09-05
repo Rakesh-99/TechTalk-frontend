@@ -48,7 +48,7 @@ const BlogForm = () => {
       try {
 
         axios
-          .post('https://blograkesh.onrender.com/blog', data).then(res => {
+          .post('https://rakeshblog.onrender.com/blog', data).then(res => {
             console.log('RES', res)
             toast.success('Blog has been posted');
           })

@@ -22,12 +22,14 @@ const Blog = () => {
 
 
 
+
+
     const navigate = useNavigate();
 
 
     const getAllBlogs = () => {
 
-        axios.get('https://blograkesh.onrender.com/getblogs', { timeout: 10000 })
+        axios.get('https://rakeshblog.onrender.com/getblogs', { timeout: 10000 })
             .then((res) => {
                 setBlogInfo(res?.data);
                 setBlogData(res?.data);
@@ -47,9 +49,6 @@ const Blog = () => {
     }, []);
 
 
-
-
-
     useEffect(() => {
 
         if (blogdata?.length !== 0) {
@@ -64,7 +63,7 @@ const Blog = () => {
             }
         }
 
-    }, [categoryType, blogdata]);
+    }, [categoryType, blogdata, blogInfo]);
 
 
 
@@ -109,7 +108,8 @@ const Blog = () => {
                 <div className="blogList  bg-gray-900 grid gap-10 px-10 mt-10 pb-20  grid-cols-3 max-[1022px]:px-5 max-[890px]:grid-cols-2  max-[550px]:grid-cols-1 max-[550px]:h-auto">
 
                     {
-                        blogInfo.map((values) => {
+                        blogInfo && blogInfo?.map((values) => {
+
                             return (
 
                                 <div key={values?._id} className='border-b-2 hover:-translate-y-1 transition-all hover:shadow-violet-700 shadow-2xl ' >

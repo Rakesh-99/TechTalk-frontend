@@ -15,7 +15,7 @@ import img from '../../Assets/Meh.png'
 
 const BlogDetails = () => {
 
-  const backendUrl = 'https://blograkesh.onrender.com/'
+  const backendUrl = 'https://blograkesh.onrender.com/';
 
 
   const username = sessionStorage.getItem('username');
@@ -23,6 +23,7 @@ const BlogDetails = () => {
 
 
   const [blogDetails, setBlogDetails] = useState();
+
 
 
   const [getCommentDetails, setCommentDetails] = useState([]); // Axios req 
@@ -50,7 +51,7 @@ const BlogDetails = () => {
     const id = searchParams.get('BLOG_ID')
 
     axios
-      .get(`https://blograkesh.onrender.com/getparticularblog/${id}`, { timeout: 10000 })
+      .get(`https://rakeshblog.onrender.com/getparticularblog/${id}`, { timeout: 10000 })
 
       .then(res => {
         setBlogDetails(res.data?.res)
@@ -80,7 +81,7 @@ const BlogDetails = () => {
 
   const getUserComment = () => {
 
-    axios.get('https://blograkesh.onrender.com/comment', { timeout: 10000 }).then((res) => {
+    axios.get('https://rakeshblog.onrender.com/comment', { timeout: 10000 }).then((res) => {
 
       setCommentDetails(res.data.res);
 
@@ -108,7 +109,7 @@ const BlogDetails = () => {
     getUserComment();
 
 
-  }, [getCommentDetails]);
+  }, []);
 
 
 
@@ -123,7 +124,7 @@ const BlogDetails = () => {
       blogId: searchParams.get('BLOG_ID'),
       comment: comment
     }
-    axios.post('https://blograkesh.onrender.com/comment', commentData).then((res) => {
+    axios.post('https://rakeshblog.onrender.com/comment', commentData).then((res) => {
 
       if (res.status === 200) {
         toast.success('Your comment has been posted')
@@ -148,6 +149,8 @@ const BlogDetails = () => {
   }
 
 
+  const url = backendUrl + blogDetails?.image;
+  console.log('Url is ', url);
 
 
   return (
@@ -159,13 +162,25 @@ const BlogDetails = () => {
 
 
 
+
       <div className='flex w-full justify-center'>
         <div className='w-11/12 h-96  flex mt-10 bg-center border border-gray-700 max-[500px]:h-60'>
-          <img src={backendUrl + blogDetails?.image} alt="blogImage" crossOrigin='anonymous' fetchpriority='high' decoding='async' loading='lazy' className='w-full' />
+
+          {blogDetails?.image !== undefined ? (
+            <img
+              src={backendUrl + blogDetails?.image}
+              alt="blogImage"
+              crossOrigin='anonymous'
+              fetchpriority='high'
+              decoding='async'
+              loading='lazy'
+              className='w-full'
+            />
+          ) : (
+            <p>Image not available</p>
+          )}
         </div>
       </div>
-
-
 
 
       {/* Blog Category  */}

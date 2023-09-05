@@ -47,7 +47,7 @@ const Login = () => {
     } else {
 
       axios
-        .post('https://blograkesh.onrender.com/login', loginInfo)
+        .post('https://rakeshblog.onrender.com/login', loginInfo)
         .then(res => {
           if (res.status === 200) {
 
