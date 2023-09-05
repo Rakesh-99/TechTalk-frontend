@@ -28,43 +28,34 @@ const Blog = () => {
     const navigate = useNavigate();
 
 
-    const getAllBlogs = () => {
-
-        axios.get('https://blograkesh.onrender.com/getblogs', { timeout: 10000 })
-            .then((res) => {
-                setBlogInfo(res?.data);
-                setBlogData(res?.data);
-            })
-            .catch((err) => {
-                if (err.response) {
-                    console.log(err.response.status, err.response.data);
-                }
-            })
-    };
-
-
-    // For rendering all Blog post ..
-
     useEffect(() => {
+        const getAllBlogs = () => {
+            axios.get('https://blograkesh.onrender.com/getblogs', { timeout: 10000 })
+                .then((res) => {
+                    setBlogInfo(res?.data);
+                    setBlogData(res?.data);
+                })
+                .catch((err) => {
+                    if (err.response) {
+                        console.log(err.response.status, err.response.data);
+                    }
+                });
+        };
+
         getAllBlogs();
     }, []);
 
 
     useEffect(() => {
-
         if (blogdata?.length !== 0) {
-
             if (categoryType === 'All') {
-                setBlogInfo(blogdata)
+                setBlogInfo(blogdata);
             } else {
-                let blogs = blogdata?.filter((el) => {
-                    return el.category === categoryType
-                })
-                setBlogInfo(blogs)
+                const filteredBlogs = blogdata?.filter((el) => el.category === categoryType);
+                setBlogInfo(filteredBlogs);
             }
         }
-
-    }, [categoryType, blogdata, blogInfo]);
+    }, [categoryType, blogdata]);
 
 
 
