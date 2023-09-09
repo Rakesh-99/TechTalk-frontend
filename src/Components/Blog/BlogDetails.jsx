@@ -154,7 +154,7 @@ const BlogDetails = () => {
 
 
   return (
-    <div className='bg-gray-800 w-full max-[500px]:h-screen'>
+    <div className='bg-gray-800 w-full max-[500px]:h-auto'>
       <NavBar />
 
 
