@@ -65,12 +65,12 @@ const BlogForm = () => {
   }
 
   return (
-    <div className='bg-gray-900 h-screen'>
+    <div className='bg-gray-900 max-[600px]:h-screen'>
       <NavBar />
 
       {userrole == 'Bearer 1' ? (
         <div>
-          <div className='flex justify-center items-center w-full flex-col space-y-3 mt-10'>
+          <div className='flex justify-center items-center w-full flex-col max-[600px]:h-screen space-y-3 mt-10'>
             <select
               className='py-2 w-96 rounded-sm px-2 '
               name='category'
