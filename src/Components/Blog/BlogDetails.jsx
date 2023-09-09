@@ -154,17 +154,15 @@ const BlogDetails = () => {
 
 
   return (
-    <div className='bg-gray-800 w-full '>
+    <div className='bg-gray-800 w-full max-[500px]:h-screen'>
       <NavBar />
 
 
       {/* Blog Image  */}
 
 
-
-
       <div className='flex w-full justify-center'>
-        <div className='w-11/12 h-96  flex mt-10 bg-center border border-gray-700'>
+        <div className='w-11/12 h-96  flex mt-10 bg-center border border-gray-700 max-[500px]:h-60'>
 
           {blogDetails?.image !== undefined ? (
             <img
