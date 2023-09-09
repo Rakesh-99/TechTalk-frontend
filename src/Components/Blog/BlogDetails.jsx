@@ -164,7 +164,7 @@ const BlogDetails = () => {
 
 
       <div className='flex w-full justify-center'>
-        <div className='w-11/12 h-96  flex mt-10 bg-center border border-gray-700 max-[500px]:h-60'>
+        <div className='w-11/12 h-96  flex mt-10 bg-center border border-gray-700 max-[500px]:h-screen'>
 
           {blogDetails?.image !== undefined ? (
             <img
