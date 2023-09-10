@@ -36,7 +36,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-gradient-to-r from-blue-900 to-violet-700 p-4 sticky top-0 left-0 transition-all">
+        <nav className="bg-gradient-to-r from-blue-900 to-violet-700 p-2 sticky top-0 left-0 transition-all">
             <div className="flex items-center justify-between transition-all ">
 
                 <div className="flex items-center">
@@ -121,7 +121,7 @@ const Navbar = () => {
                         {
                             !accessToken &&
                             <div className='flex'>
-                                    <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/login'} className=' text-sm  bg-gray-900 px-5  py-2 rounded-sm'>Login</Link ></li>
+                                <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/login'} className=' text-sm  bg-gray-900 px-5  py-2 rounded-sm'>Login</Link ></li>
 
                                 {/* <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/signup'} className='bg-red-700 text-sm px-5 py-2 rounded-sm' >Signup</Link ></li> */}
                             </div>
