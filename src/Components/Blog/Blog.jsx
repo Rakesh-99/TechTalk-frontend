@@ -28,25 +28,51 @@ const Blog = () => {
     const navigate = useNavigate();
 
 
-    useEffect(() => {
-        setLoader('Loading...'); // Set the loader to indicate loading
-        const getAllBlogs = () => {
-            axios.get('https://blograkesh.onrender.com/getblogs', { timeout: 10000 })
-                .then((res) => {
-                    setBlogInfo(res?.data);
-                    setBlogData(res?.data);
-                    setLoader(null); // Set the loader to null when data is loaded
-                })
-                .catch((err) => {
-                    if (err.response) {
-                        console.log(err.response.status, err.response.data);
-                    }
-                    setLoader('Error occurred while fetching data'); // Handle errors and set an appropriate message
-                });
-        };
+    // useEffect(() => {
+    //     setLoader('Loading...'); // Set the loader to indicate loading
+    //     const getAllBlogs = () => {
+    //         axios.get(' https://blograkesh.onrender.com/getblogs', { timeout: 10000 })
+    //             .then((res) => {
+    //                 setBlogInfo(res?.data);
+    //                 setBlogData(res?.data);
+    //                 setLoader(null); // Set the loader to null when data is loaded
+    //             })
+    //             .catch((err) => {
+    //                 if (err.response) {
+    //                     console.log(err.response.status, err.response.data);
+    //                 }
+    //                 setLoader('Error occurred while fetching data'); // Handle errors and set an appropriate message
+    //             });
+    //     };
 
+    //     getAllBlogs();
+    // }, []);
+
+    useEffect(() => {
+
+        setLoader('Loading...');
+
+        const getAllBlogs = async () => {
+
+            try {
+                const response = await axios.get('https://blograkesh.onrender.com/getblogs', { timeout: 10000 });
+                setBlogData(response?.data);
+                setBlogInfo(response?.data);
+                setLoader(null);
+
+            } catch (error) {
+                if (error.response) {
+                    console.log(error.response.status, error.response.data);
+                }
+                setLoader('Error occurred while fetching the data from server');
+            }
+
+        }
         getAllBlogs();
     }, []);
+
+
+
 
 
 
@@ -59,6 +85,7 @@ const Blog = () => {
                 setBlogInfo(filteredBlogs);
             }
         }
+
     }, [categoryType, blogdata]);
 
 

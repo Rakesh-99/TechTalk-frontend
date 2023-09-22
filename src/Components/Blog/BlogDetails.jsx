@@ -15,7 +15,11 @@ import img from '../../Assets/Meh.png'
 
 const BlogDetails = () => {
 
-  const backendUrl = 'https://blograkesh.onrender.com/';
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const [loader, setLoader] = useState('');
+
+  const backendUrl = ' https://blograkesh.onrender.com/';
 
 
   const username = sessionStorage.getItem('username');
@@ -46,20 +50,41 @@ const BlogDetails = () => {
 
 
 
-  const getBlogDetails = () => {
+  // const getBlogDetails = () => {
 
-    const id = searchParams.get('BLOG_ID')
+  //   const id = searchParams.get('BLOG_ID')
 
-    axios
-      .get(`https://blograkesh.onrender.com/getparticularblog/${id}`, { timeout: 10000 })
+  //   axios
+  //     .get(` https://blograkesh.onrender.com/getparticularblog/${id}`, { timeout: 10000 })
 
-      .then(res => {
-        setBlogDetails(res.data?.res)
+  //     .then(res => {
+  //       setBlogDetails(res.data?.res)
 
-      })
-      .catch(err => {
-        console.log(err)
-      })
+  //     })
+  //     .catch(err => {
+  //       console.log(err)
+  //     })
+  // }
+
+  const getBlogDetails = async () => {
+
+    const id = searchParams.get('BLOG_ID');
+    setLoader('Loading...')
+
+    try {
+
+      const response = await axios.get(`https://blograkesh.onrender.com/getparticularblog/${id}`, { timeout: 10000 });
+
+      setBlogDetails(response.data?.res);
+      setLoader(null);
+
+    } catch (error) {
+      if (error?.response) {
+        setLoader('Error occurred while fetching the blog from server, try again later');
+        console.log(error.response.status, error.response.data);
+      }
+    }
+
   }
 
 
@@ -81,7 +106,7 @@ const BlogDetails = () => {
 
   const getUserComment = () => {
 
-    axios.get('https://blograkesh.onrender.com/comment', { timeout: 10000 }).then((res) => {
+    axios.get(' https://blograkesh.onrender.com/comment', { timeout: 10000 }).then((res) => {
 
       setCommentDetails(res.data.res);
 
@@ -124,7 +149,7 @@ const BlogDetails = () => {
       blogId: searchParams.get('BLOG_ID'),
       comment: comment
     }
-    axios.post('https://blograkesh.onrender.com/comment', commentData).then((res) => {
+    axios.post(' https://blograkesh.onrender.com/comment', commentData).then((res) => {
 
       if (res.status === 200) {
         toast.success('Your comment has been posted')
@@ -149,9 +174,11 @@ const BlogDetails = () => {
   }
 
 
-  const url = backendUrl + blogDetails?.image;
-  console.log('Url is ', url);
+  const imgUrl = (backendUrl && blogDetails?.image) ? backendUrl + blogDetails.image : undefined;
 
+  useEffect(() => {
+
+  }, [imgUrl]);
 
   return (
     <div className='bg-gray-800 w-full max-[500px]:h-auto'>
@@ -164,9 +191,9 @@ const BlogDetails = () => {
       <div className='flex w-full justify-center'>
         <div className='w-11/12 h-96  flex mt-10 bg-center border border-gray-700 max-[500px]:h-60'>
 
-          {blogDetails?.image !== undefined ? (
+          {imageLoaded ? (
             <img
-              src={backendUrl + blogDetails?.image}
+              src={imgUrl}
               alt="blogImage"
               crossOrigin='anonymous'
               fetchpriority='high'
@@ -175,8 +202,9 @@ const BlogDetails = () => {
               className='w-full'
             />
           ) : (
-            <p>Image not available</p>
+            <p>Couldn't load image</p>
           )}
+
         </div>
       </div>
 
