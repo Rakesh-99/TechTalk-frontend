@@ -23,14 +23,6 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className="w-1/2  flex justify-center items-center  max-[760px]:w-full ">
-                    <div className="w-3/5 flex ">
-                        <img src={heroImg} alt="" className='w-full object-cover hover:bg-violet-500 rounded-2xl hover:scale-105 transition-all active:scale-50' />
-                    </div>
-                </div>
-
-
-
             </div>
             <Footer />
         </div>

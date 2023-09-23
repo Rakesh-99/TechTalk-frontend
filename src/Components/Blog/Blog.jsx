@@ -112,7 +112,7 @@ const Blog = () => {
                         categories?.map((categories) => {
                             return (
                                 <div className="" key={categories.id} onClick={() => setCategoryType(categories?.technology)}>
-                                    <span className='cursor-pointer active:text-green-500 hover:underline'>{categories?.technology}</span>
+                                    <span className='cursor-pointer active:text-white  text-violet-200 font-semibold hover:underline'>{categories?.technology}</span>
                                 </div>
                             )
                         })

@@ -36,7 +36,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-gradient-to-r from-blue-900 to-violet-700 p-2 sticky top-0 left-0 transition-all">
+        <nav className="bg-gradient-to-r from-blue-900 to-violet-800 p-3 sticky top-0 left-0 transition-all">
             <div className="flex items-center justify-between transition-all ">
 
                 <div className="flex items-center">
@@ -60,7 +60,7 @@ const Navbar = () => {
                             accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300 bg-red-700 rounded-sm py-1 px-2'><span onClick={userLogout}>Logout</span></li>
                         }
                         {
-                            !accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300  active:bg-green-900 font-semibold rounded-sm py-2 bg-gray-900 px-6'><Link to={'/login'}>Login</Link ></li>
+                            !accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300  active:bg-green-900 font-semibold rounded-sm py-1 bg-gray-900 px-5'><Link to={'/login'}>Login</Link ></li>
                         }
                         {/* {
                             !accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300 bg-red-500 active:bg-red-900 font-semibold rounded-sm py-1 px-2'><Link to={'/signup'}>Signup</Link ></li>
@@ -121,7 +121,7 @@ const Navbar = () => {
                         {
                             !accessToken &&
                             <div className='flex'>
-                                <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/login'} className=' text-sm  bg-gray-900 px-5  py-2 rounded-sm'>Login</Link ></li>
+                                <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/login'} className=' text-sm rounded-sm'>Login</Link ></li>
 
                                 {/* <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/signup'} className='bg-red-700 text-sm px-5 py-2 rounded-sm' >Signup</Link ></li> */}
                             </div>
