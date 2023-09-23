@@ -73,7 +73,7 @@ const BlogDetails = () => {
 
     try {
 
-      const response = await axios.get(`https://blograkesh.onrender.com/getparticularblog/${id}`, { timeout: 10000 });
+      const response = await axios.get(`https://blograkesh.onrender.com/getparticularblog/${id}`);
 
       setBlogDetails(response.data?.res);
       setLoader(null);
@@ -106,7 +106,7 @@ const BlogDetails = () => {
 
   const getUserComment = () => {
 
-    axios.get(' https://blograkesh.onrender.com/comment', { timeout: 10000 }).then((res) => {
+    axios.get(' https://blograkesh.onrender.com/comment').then((res) => {
 
       setCommentDetails(res.data.res);
 

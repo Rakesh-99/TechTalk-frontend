@@ -53,9 +53,8 @@ const Blog = () => {
         setLoader('Loading...');
 
         const getAllBlogs = async () => {
-
             try {
-                const response = await axios.get('https://blograkesh.onrender.com/getblogs', { timeout: 10000 });
+                const response = await axios.get('https://blograkesh.onrender.com/getblogs');
                 setBlogData(response?.data);
                 setBlogInfo(response?.data);
                 setLoader(null);
@@ -66,7 +65,6 @@ const Blog = () => {
                 }
                 setLoader('Error occurred while fetching the data from server');
             }
-
         }
         getAllBlogs();
     }, []);
