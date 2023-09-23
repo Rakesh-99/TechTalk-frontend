@@ -26,31 +26,29 @@ const OtpVerify = () => {
     };
 
     const otpVerify = () => {
-        try {
-            const email = location.state.email; // Get email from location state
 
-            // Make the API call to verify the OTP
-            axios
-                .post(' https://blograkesh.onrender.com/otpverify', { email, emailToken: otp })
-                .then((res) => {
-                    console.log(res.data);
-                    if (res.status === 200) {
-                        toast.success('You have been verified');
+        const email = location.state.email; // Get email from location state
 
-                        setTimeout(() => {
-                            navigate('/login');
-                        }, 2000);
+        // Make the API call to verify the OTP
+        axios
+            .post(' https://blograkesh.onrender.com/otpverify', { email, emailToken: otp })
+            .then((res) => {
+                console.log(res.data);
+                if (res.status === 200) {
+                    toast.success('You have been verified');
 
-                    } else if (res.status === 404) {
-                        toast.error('Invalid OTP entered, Please enter a valid OTP');
-                    }
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        } catch (error) {
-            console.log(error);
-        }
+                    setTimeout(() => {
+                        navigate('/login');
+                    }, 1000);
+
+                } else if (res.status === 404) {
+                    toast.error('Invalid OTP entered');
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+
     };
 
     return (
@@ -69,7 +67,7 @@ const OtpVerify = () => {
                     className="bg-blue-500 text-white font-semibold w-72 py-1 px-3 rounded-sm active:bg-blue-700 "
                     onClick={otpHandle}
                 >
-                    Submit OTP
+                    Submit
                 </button>
             </div>
         </>
