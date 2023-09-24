@@ -31,7 +31,7 @@ const Blog = () => {
     // useEffect(() => {
     //     setLoader('Loading...'); // Set the loader to indicate loading
     //     const getAllBlogs = () => {
-    //         axios.get(' https://blograkesh.onrender.com/getblogs', { timeout: 10000 })
+    //         axios.get(' https://confused-lime-moccasins.cyclic.cloud/getblogs', { timeout: 10000 })
     //             .then((res) => {
     //                 setBlogInfo(res?.data);
     //                 setBlogData(res?.data);
@@ -54,7 +54,7 @@ const Blog = () => {
 
         const getAllBlogs = async () => {
             try {
-                const response = await axios.get('https://blograkesh.onrender.com/getblogs');
+                const response = await axios.get('https://confused-lime-moccasins.cyclic.cloud/getblogs');
                 setBlogData(response?.data);
                 setBlogInfo(response?.data);
                 setLoader(null);

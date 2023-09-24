@@ -47,7 +47,7 @@ const Login = () => {
     } else {
 
       axios
-        .post(' https://blograkesh.onrender.com/login', loginInfo)
+        .post(' https://confused-lime-moccasins.cyclic.cloud/login', loginInfo)
         .then(res => {
           if (res.status === 200) {
 

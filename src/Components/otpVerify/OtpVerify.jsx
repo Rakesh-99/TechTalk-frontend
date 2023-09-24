@@ -31,7 +31,7 @@ const OtpVerify = () => {
 
         // Make the API call to verify the OTP
         axios
-            .post(' https://blograkesh.onrender.com/otpverify', { email, emailToken: otp })
+            .post(' https://confused-lime-moccasins.cyclic.cloud/otpverify', { email, emailToken: otp })
             .then((res) => {
                 console.log(res.data);
                 if (res.status === 200) {
