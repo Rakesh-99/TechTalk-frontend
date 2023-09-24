@@ -69,7 +69,7 @@ const Signup = () => {
       return false
     } else {
       axios
-        .post(' https://confused-lime-moccasins.cyclic.cloud/signup', signupInfo)
+        .post(' https://blograkesh.onrender.com/signup', signupInfo)
         .then(res => {
           if (res.status === 200) {
 

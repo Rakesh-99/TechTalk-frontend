@@ -19,7 +19,7 @@ const BlogDetails = () => {
 
   const [loader, setLoader] = useState('');
 
-  const backendUrl = ' https://confused-lime-moccasins.cyclic.cloud/';
+  const backendUrl = ' https://blograkesh.onrender.com/';
 
 
   const username = sessionStorage.getItem('username');
@@ -55,7 +55,7 @@ const BlogDetails = () => {
   //   const id = searchParams.get('BLOG_ID')
 
   //   axios
-  //     .get(` https://confused-lime-moccasins.cyclic.cloud/getparticularblog/${id}`, { timeout: 10000 })
+  //     .get(` https://blograkesh.onrender.com/getparticularblog/${id}`, { timeout: 10000 })
 
   //     .then(res => {
   //       setBlogDetails(res.data?.res)
@@ -73,7 +73,7 @@ const BlogDetails = () => {
 
     try {
 
-      const response = await axios.get(`https://confused-lime-moccasins.cyclic.cloud/getparticularblog/${id}`);
+      const response = await axios.get(`https://blograkesh.onrender.com/getparticularblog/${id}`);
 
       setBlogDetails(response.data?.res);
       setLoader(null);
@@ -106,7 +106,7 @@ const BlogDetails = () => {
 
   const getUserComment = () => {
 
-    axios.get(' https://confused-lime-moccasins.cyclic.cloud/comment').then((res) => {
+    axios.get(' https://blograkesh.onrender.com/comment').then((res) => {
 
       setCommentDetails(res.data.res);
 
@@ -149,7 +149,7 @@ const BlogDetails = () => {
       blogId: searchParams.get('BLOG_ID'),
       comment: comment
     }
-    axios.post(' https://confused-lime-moccasins.cyclic.cloud/comment', commentData).then((res) => {
+    axios.post(' https://blograkesh.onrender.com/comment', commentData).then((res) => {
 
       if (res.status === 200) {
         toast.success('Your comment has been posted')
