@@ -69,7 +69,7 @@ const Signup = () => {
       return false
     } else {
       axios
-        .post(' https://blograkesh.onrender.com/signup', signupInfo)
+        .post(' http://localhost:8000/signup', signupInfo)
         .then(res => {
           if (res.status === 200) {
 

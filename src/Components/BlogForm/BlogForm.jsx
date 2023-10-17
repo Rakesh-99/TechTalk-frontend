@@ -48,7 +48,7 @@ const BlogForm = () => {
       try {
 
         axios
-          .post(' https://blograkesh.onrender.com/blog', data).then(res => {
+          .post(' http://localhost:8000/blog', data).then(res => {
             console.log('RES', res)
             toast.success('Blog has been posted');
           })
@@ -85,9 +85,7 @@ const BlogForm = () => {
               <option value='Java'>Java</option>
               <option value='Javascript'>Javascript</option>
               <option value='React'>React</option>
-              <option value='MongoDB'>MongoDB</option>
               <option value='Git'>Git</option>
-              <option value='Docker'>Docker</option>
             </select>
 
             <input
@@ -117,10 +115,6 @@ const BlogForm = () => {
             />
 
             <CkEditor onDataChange={handleEditorDataChange} />
-            {/* <div dangerouslySetInnerHTML={{ __html: editorData }} />  */}
-
-
-
             <button
               className='text-white bg-indigo-700 py-2 font-semibold w-52 rounded-md active:bg-indigo-800'
               onClick={postBlog}

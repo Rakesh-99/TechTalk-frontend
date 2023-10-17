@@ -6,7 +6,7 @@ import { BsThreeDots } from 'react-icons/bs'
 import { toast } from 'react-toastify'
 import { AiOutlineComment } from 'react-icons/ai';
 import { BiSolidUser } from 'react-icons/bi';
-import img from '../../Assets/Meh.png'
+
 
 
 
@@ -19,11 +19,11 @@ const BlogDetails = () => {
 
   const [loader, setLoader] = useState('');
 
-  const backendUrl = ' https://blograkesh.onrender.com/';
+  const backendUrl = ' http://localhost:8000/';
 
 
   const username = sessionStorage.getItem('username');
-  const navigate = useNavigate();
+
 
 
   const [blogDetails, setBlogDetails] = useState();
@@ -34,38 +34,12 @@ const BlogDetails = () => {
 
   const [commentInfo, setCommentInfo] = useState([]);
 
-  const [comment, setComment] = useState();
+  const [comment, setComment] = useState(); // Axios request for post comment
 
   let [searchParams, setSearchParams] = useSearchParams()
 
 
-
-
-
-
-
-
-
-
-
-
-
-  // const getBlogDetails = () => {
-
-  //   const id = searchParams.get('BLOG_ID')
-
-  //   axios
-  //     .get(` https://blograkesh.onrender.com/getparticularblog/${id}`, { timeout: 10000 })
-
-  //     .then(res => {
-  //       setBlogDetails(res.data?.res)
-
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //     })
-  // }
-
+  // Gate blog details : 
   const getBlogDetails = async () => {
 
     const id = searchParams.get('BLOG_ID');
@@ -73,11 +47,13 @@ const BlogDetails = () => {
 
     try {
 
-      const response = await axios.get(`https://blograkesh.onrender.com/getparticularblog/${id}`);
+      const response = await axios.get(`http://localhost:8000/getparticularblog/${id}`);
 
       setBlogDetails(response.data?.res);
       setLoader(null);
-
+      if (response.data.res?.image) {
+        setImageLoaded(true);
+      }
     } catch (error) {
       if (error?.response) {
         setLoader('Error occurred while fetching the blog from server, try again later');
@@ -89,8 +65,6 @@ const BlogDetails = () => {
 
 
   // Rendering BlogDetails ..
-
-
   useEffect(() => {
 
     getBlogDetails();
@@ -102,45 +76,17 @@ const BlogDetails = () => {
 
 
 
-  // getUser User comment :
 
-  const getUserComment = () => {
+  // Action on click of comment icon : 
 
-    axios.get(' https://blograkesh.onrender.com/comment').then((res) => {
+  const commentClick = () => {
+    if (!username) {
 
-      setCommentDetails(res.data.res);
-
-    }).catch((err) => {
-      console.log(err);
-    })
+      toast.error('You are not logged in !');
+    }
   }
 
-
-
-  // For rendering after every Comment : 
-
-  useEffect(() => {
-
-    const id = searchParams.get('BLOG_ID');
-
-    if (getCommentDetails?.length !== 0) {
-
-      let data = getCommentDetails?.filter((item) => {
-        return item.blogId == id;
-      })
-
-      setCommentInfo(data);
-    }
-    getUserComment();
-
-
-  }, []);
-
-
-
-
-
-  //  Post Comment :
+  // Axios req for Post Comment :
 
   const postComment = () => {
 
@@ -149,29 +95,56 @@ const BlogDetails = () => {
       blogId: searchParams.get('BLOG_ID'),
       comment: comment
     }
-    axios.post(' https://blograkesh.onrender.com/comment', commentData).then((res) => {
+    axios.post(' http://localhost:8000/comment', commentData).then((res) => {
 
       if (res.status === 200) {
         toast.success('Your comment has been posted')
 
         setComment('');
+
+        getUserComment();
       }
     }).catch((err) => {
       toast.error('Error occurred while posting comment')
-      console.log(err);
     })
   }
 
 
-  const commentClick = () => {
-    if (!username) {
+  // Axios req for getUser User comment :
 
-      toast.error('You must login before you can post a comment.');
-      setTimeout(() => {
-        navigate('/login')
-      }, 3000);
-    }
+  const getUserComment = () => {
+
+    axios.get(' http://localhost:8000/comment').then((res) => {
+
+      setCommentDetails(res.data.res);
+
+    }).catch((err) => {
+      toast.error('An unexpected error occurred while fetching comments !');
+    })
   }
+
+  // For filtering Comment : 
+
+  useEffect(() => {
+
+    const id = searchParams.get('BLOG_ID');
+
+    if (getCommentDetails?.length !== 0) {
+
+      let data = getCommentDetails?.filter((item) => {
+        return item.blogId === id;
+      })
+
+      setCommentInfo(data);
+    }
+
+  }, [searchParams, getCommentDetails]);
+
+
+  useEffect(() => {
+    getUserComment();
+  }, []);
+
 
 
   const imgUrl = (backendUrl && blogDetails?.image) ? backendUrl + blogDetails.image : undefined;
@@ -246,7 +219,7 @@ const BlogDetails = () => {
 
 
       <div className="text-violet-300 py-10 w-full flex-col items-center flex hover:cursor-pointer  justify-center">
-        <label htmlFor="">Share your thoughts</label>
+        <label htmlFor="">Share your thoughts by clicking on below comment icon.</label>
         <AiOutlineComment className='text-5xl' style={{ display: username ? 'none' : 'block' }} onClick={commentClick} />
       </div>
 
