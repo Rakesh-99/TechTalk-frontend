@@ -122,8 +122,8 @@ const Blog = () => {
                             blogInfo && blogInfo?.map((values) => {
 
                                 return (
-                                    <div className='transition-all'>
-                                        <div key={values?._id} className='border-b-2 hover:-translate-y-1 transition-all hover:shadow-violet-700 shadow-2xl w-96 ' >
+                                    <div className='transition-all' key={values?._id} >
+                                        <div className='border-b-2 hover:-translate-y-1 transition-all hover:shadow-violet-700 shadow-2xl w-96 ' >
 
 
                                             <div onClick={() => handlepressReadmore(values)} className="flex flex-col space-y-5 hover:cursor-pointer  py-5  px-5  ">

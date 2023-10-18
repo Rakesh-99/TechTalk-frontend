@@ -158,7 +158,7 @@ const BlogDetails = () => {
 
     <div className='bg-gray-800 w-full'>
       <NavBar />
-      {loading === true ? <div className="pt-80"><Spinner  /></div>  :
+      {loading === true ? <div className="pt-80"><Spinner /></div> :
         <div className="" >
 
 
@@ -249,7 +249,7 @@ const BlogDetails = () => {
               return (
 
                 <div className="w-full flex flex-col items-center h-auto" key={values._id}>
-                  <div className=" my-5 w-1/2  rounded-md flex flex-row border border-gray-500 items-center px-4 py-2 gap-8">
+                  <div className=" my-5 px-2  rounded-md flex flex-row border items-center w-96  py-1 border-gray-700 shadow-sm shadow-gray-700 gap-8">
 
 
                     <div className="" >
