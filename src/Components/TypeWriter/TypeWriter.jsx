@@ -14,8 +14,8 @@ const TypeWriter = () => {
     return (
         <>
 
-            <h1 className='text-3xl text-white font-semibold max-[500px]:text-xl'>I'll be uploading blog on
-                <span className='text-4xl text-violet-400 ml-5 max-[500px]:text-xl '>{text} <Cursor /></span>
+            <h1 className=' text-white font-semibold text-lg sm:text-2xl'>I'll be uploading blog on
+                <span className=' text-violet-400 ml-2 text-lg sm:text-3xl  '>{text} <Cursor /></span>
             </h1>
 
         </>

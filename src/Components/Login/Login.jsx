@@ -89,7 +89,7 @@ const Login = () => {
 
     <div className='flex flex-col w-full justify-center items-center bg-black h-screen'>
 
-      {loading === true ? <div className='pt-96'><Spinner /></div> :
+      {loading === true ? <div className='pt-96 flex flex-col'> <p className='text-white text-center mb-10'>Please wait...</p> <Spinner /></div> :
 
         <form
           action=''
