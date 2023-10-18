@@ -9,13 +9,13 @@ import { FaLaptopCode, FaTwitter } from 'react-icons/fa';
 const About = () => {
 
     return (
-        <div >
+        <div className='' >
             <NavBar />
 
-            <div className=" bg-gray-900 px-5 ">
+            <div className=" bg-gray-900 px-5 h-screen flex flex-col items-center justify-center">
 
                 <div className="heroImg w-full flex justify-center py-5">
-                    <img src={heroImg} alt="" className='w-56 max-[500px]:w-44' />
+                    <img src={heroImg} alt="" className='w-64 max-[500px]:w-56' />
                 </div>
 
                 <div className="into flex justify-center py-3">
@@ -24,7 +24,7 @@ const About = () => {
 
                 <div className="description flex w-full justify-center flex-col items-center mt-5">
                     <p className='w-1/3 text-center text-violet-200 max-[700px]:text-justify max-[700px]:w-full '>
-                        I am a self taught developer currently pursuing B.TECH in Computer Science in Nalanda Institute of Technology. My field of Interest's are building new Web Technologies and Products.
+                        I am a self taught developer currently pursuing B.TECH in Computer Science in. My field of Interest's are building new Web Technologies and Products.
                     </p>
 
                     <p className='text-white mt-5 w-1/3 text-center max-[700px]:w-full max-[700px]:text-justify max-[700px]:mt-10'>
@@ -36,7 +36,7 @@ const About = () => {
 
                     <button className='text-white bg-indigo-800 py-1 px-2 rounded-sm' ><a href="https://rakesh-ku-parida.vercel.app/"><span className='flex items-center space-x-2'><FaLaptopCode className='text-xl' /><p className='font-semibold text-sm'>See my works</p> </span></a></button>
 
-                    <button className='text-white bg-indigo-800 py-1 px-3 rounded-sm'><a href="#"></a> <span className='flex items-center space-x-2'><FaTwitter /><p className='font-semibold text-sm'>Follow Me</p></span></button>
+                    <button className='text-white bg-indigo-800 py-1 px-3 rounded-sm'> <span className='flex items-center space-x-2'><FaTwitter /><p className='font-semibold text-sm'>Follow Me</p></span></button>
 
                 </div>
 

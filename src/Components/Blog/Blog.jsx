@@ -95,7 +95,7 @@ const Blog = () => {
                         categories?.map((categories) => {
                             return (
                                 <div className="" key={categories.id} onClick={() => setCategoryType(categories?.technology)}>
-                                    <span className='cursor-pointer active:text-white  text-violet-200 font-semibold hover:underline'>{categories?.technology}</span>
+                                    <span className='cursor-pointer active:text-white  text-violet-300 font-semibold hover:underline'>{categories?.technology}</span>
                                 </div>
                             )
                         })
@@ -107,16 +107,16 @@ const Blog = () => {
                         <span className='z-20'>Tech-Talk</span>
                     </div>
                     <div className="">
-                        <span className='text-6xl text-white font-bold max-[890px]:text-4xl max-[450px]:text-3xl'>Explore <span className='text-violet-400'>learn</span> Build 🚀</span>
+                        <span className='text-5xl text-white font-bold max-[890px]:text-4xl max-[450px]:text-3xl'>Explore <span className='text-violet-500'>learn</span> Build 🚀</span>
                     </div>
                 </div>
 
-                <div className="blogList flex flex-wrap w-full justify-center gap-10 py-10">
+                <div className="blogList flex items-center justify-center w-full flex-wrap gap-10 pb-20">
 
                     {
                         loading === true && blogInfo.length === 0 ?
-                            <div className="w-full justify-center pt-56">
-                                <p className=''><Spinner /></p>
+                            <div className="w-full pt-32">
+                                <p className='text-white text-center mb-10'>Please wait while Fetching data from server.</p> <span><Spinner /></span>
                             </div> :
 
                             blogInfo && blogInfo?.map((values) => {
