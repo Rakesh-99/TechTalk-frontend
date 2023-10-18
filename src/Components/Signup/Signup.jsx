@@ -2,14 +2,16 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
-
-
+import Spinner from '../Spinner/Spinner';
 
 
 
 
 
 const Signup = () => {
+
+
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate()
 
@@ -68,20 +70,22 @@ const Signup = () => {
       toast.error('Password can not be less than 6 char')
       return false
     } else {
+      setLoading(true);
       axios
         .post(' https://blograkesh.onrender.com/signup', signupInfo)
         .then(res => {
+          setLoading(false);
           if (res.status === 200) {
-
             toast.success('OTP has been sent to your mail');
-            setTimeout(() => {
-              navigate('/otpVerify', { state: { email: signupInfo.email } });
-            }, 3000);
+            navigate('/otpVerify', { state: { email: signupInfo.email } });
+
           }
         }).catch((err) => {
+          setLoading(false);
           toast.error(err.response.data.res);
         })
         .catch(err => {
+          setLoading(false);
           toast.error('Something went wrong, Please try again later');
         });
     }
@@ -92,79 +96,82 @@ const Signup = () => {
 
     <div className='flex flex-col w-full justify-center h-screen bg-black items-center'>
 
-      <form
-        action=''
-        className='flex flex-col w-[400px] border border-indigo-500 rounded-md px-5 py-5'
-      >
-        <div className='titile'>
-          <h1 className='text-3xl text-indigo-500 font-semibold mb-5'>Signup</h1>
-        </div>
-
-
-        <div className='flex flex-col '>
-
-          <label htmlFor='' className='font-semibold text-sm '>
-            Username:
-          </label>
-          <input
-            type='text'
-            placeholder='Username'
-            className='border border-indigo-500 outline-none py-2 px-1  rounded-sm bg-black  text-indigo-300'
-            autoComplete='off'
-            onChange={inputChangeHandle}
-            name='username'
-            value={signupInfo.username}
-          />
-        </div>
-
-
-        <div className='flex flex-col mt-3'>
-          <label htmlFor='' className='font-semibold text-sm'>
-            Email:
-          </label>
-          <input
-            type='text'
-            placeholder='Email'
-            className='border border-indigo-500 outline-none  py-2 px-1 rounded-sm  bg-black text-indigo-300 '
-            autoComplete='off'
-            onChange={inputChangeHandle}
-            name='email'
-            value={signupInfo.email}
-          />
-        </div>
-
-
-        <div className='flex flex-col mt-3'>
-          <label htmlFor='' className='font-semibold text-sm'>
-            Password:
-          </label>
-          <input
-            type='password'
-            placeholder='Password'
-            className='border border-indigo-500 outline-none py-2 px-1 rounded-sm bg-black text-indigo-300 '
-            onChange={inputChangeHandle}
-            name='password'
-            value={signupInfo.password}
-          />
-        </div>
-
-        <button
-          className='bg-gradient-to-r from-indigo-500 to-blue-500 text-white py-1 px-2 mt-5  rounded-sm font-semibold active:bg-green-600'
-          onClick={register}
+      {loading === true ? <div className="pt-96 space-y-5"> <p className='text-white text-lg'>Registering user...</p> <Spinner /></div>
+        :
+        <form
+          action=''
+          className='flex flex-col w-[400px] border border-indigo-500 rounded-md px-5 py-5'
         >
-          Register
-        </button>
+          <div className='titile'>
+            <h1 className='text-3xl text-indigo-500 font-semibold mb-5'>Signup</h1>
+          </div>
 
 
-        <div className='flex justify-center mt-5'>
-          <Link
-            to={'/login'}
-            className=' text-indigo-400  font-lg text-base t hover:underline active:text-green-600'
+          <div className='flex flex-col '>
+
+            <label htmlFor='' className='font-semibold text-sm '>
+              Username:
+            </label>
+            <input
+              type='text'
+              placeholder='Username'
+              className='border border-indigo-500 outline-none py-2 px-1  rounded-sm bg-black  text-indigo-300'
+              autoComplete='off'
+              onChange={inputChangeHandle}
+              name='username'
+              value={signupInfo.username}
+            />
+          </div>
+
+
+          <div className='flex flex-col mt-3'>
+            <label htmlFor='' className='font-semibold text-sm'>
+              Email:
+            </label>
+            <input
+              type='text'
+              placeholder='Email'
+              className='border border-indigo-500 outline-none  py-2 px-1 rounded-sm  bg-black text-indigo-300 '
+              autoComplete='off'
+              onChange={inputChangeHandle}
+              name='email'
+              value={signupInfo.email}
+            />
+          </div>
+
+
+          <div className='flex flex-col mt-3'>
+            <label htmlFor='' className='font-semibold text-sm'>
+              Password:
+            </label>
+            <input
+              type='password'
+              placeholder='Password'
+              className='border border-indigo-500 outline-none py-2 px-1 rounded-sm bg-black text-indigo-300 '
+              onChange={inputChangeHandle}
+              name='password'
+              value={signupInfo.password}
+            />
+          </div>
+
+          <button
+            className='bg-gradient-to-r from-indigo-500 to-blue-500 text-white py-1 px-2 mt-5  rounded-sm font-semibold active:bg-green-600'
+            onClick={register}
           >
-            Already have an account
-          </Link>
-        </div>
-      </form>
+            Register
+          </button>
+
+
+          <div className='flex justify-center mt-5'>
+            <Link
+              to={'/login'}
+              className=' text-indigo-400  font-lg text-base t hover:underline active:text-green-600'
+            >
+              Already have an account
+            </Link>
+          </div>
+        </form>
+      }
     </div>
   )
 }
