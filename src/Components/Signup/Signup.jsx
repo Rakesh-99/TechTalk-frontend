@@ -72,7 +72,7 @@ const Signup = () => {
     } else {
       setLoading(true);
       axios
-        .post(' https://blograkesh.onrender.com/signup', signupInfo)
+        .post('https://blograkesh.onrender.com/signup', signupInfo)
         .then(res => {
           setLoading(false);
           if (res.status === 200) {

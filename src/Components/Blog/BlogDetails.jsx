@@ -18,7 +18,7 @@ const BlogDetails = () => {
 
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  const backendUrl = ' https://blograkesh.onrender.com/';
+  const backendUrl = 'https://blograkesh.onrender.com/';
 
   const username = sessionStorage.getItem('username');
 
@@ -93,7 +93,7 @@ const BlogDetails = () => {
       blogId: searchParams.get('BLOG_ID'),
       comment: comment
     }
-    axios.post(' https://blograkesh.onrender.com/comment', commentData).then((res) => {
+    axios.post('https://blograkesh.onrender.com/comment', commentData).then((res) => {
 
       if (res.status === 200) {
         toast.success('Your comment has been posted')
@@ -113,7 +113,7 @@ const BlogDetails = () => {
   const getUserComment = () => {
 
 
-    axios.get(' https://blograkesh.onrender.com/comment').then((res) => {
+    axios.get('https://blograkesh.onrender.com/comment').then((res) => {
       setCommentDetails(res.data.res);
 
     }).catch((err) => {
@@ -211,7 +211,7 @@ const BlogDetails = () => {
 
           {/* Blog Description  */}
 
-          <div className='description px-20 max-[600px]:px-5'>
+          <div className='description px-32 max-[600px]:px-5'>
             <span className='text-gray-200 text-justify max-[600px]:text-sm  max-[600px]:leading-8'>
               <div dangerouslySetInnerHTML={{ __html: blogDetails?.description }} />
             </span>

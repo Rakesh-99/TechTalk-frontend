@@ -36,7 +36,7 @@ const OtpVerify = () => {
 
         setLoading(true);
         axios
-            .post(' https://blograkesh.onrender.com/otpverify', { email, emailToken: otp })
+            .post('https://blograkesh.onrender.com/otpverify', { email, emailToken: otp })
             .then((res) => {
 
                 if (res.status === 200) {

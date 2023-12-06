@@ -10,7 +10,7 @@ const Navbar = () => {
 
     const accessToken = sessionStorage.getItem('accessToken');
     const userrole = sessionStorage.getItem('userrole');
-
+    console.log(userrole);
 
 
 
@@ -24,6 +24,7 @@ const Navbar = () => {
         sessionStorage.removeItem('email');
         alert('You have been logged out successfully')
         navigate('/blog');
+
     }
 
 
@@ -36,7 +37,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-gradient-to-r from-blue-900 to-violet-800 p-3 sticky top-0 left-0 transition-all">
+        <nav className="bg-gradient-to-r from-blue-900 to-violet-900 p-3 sticky top-0 left-0 transition-all">
             <div className="flex items-center justify-between transition-all ">
 
                 <div className="flex items-center">
@@ -60,11 +61,11 @@ const Navbar = () => {
                             accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300 bg-red-700 rounded-sm py-1 px-2'><span onClick={userLogout}>Logout</span></li>
                         }
                         {
-                            !accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300  active:bg-green-900 font-semibold rounded-sm py-1 bg-gray-900 px-5'><Link to={'/login'}>Login</Link ></li>
+                            !accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300  active:bg-green-900 font-semibold rounded-sm py-1 bg-gray-900 px-2'><Link to={'/login'}>Login</Link ></li>
                         }
-                        {/* {
-                            !accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300 bg-red-500 active:bg-red-900 font-semibold rounded-sm py-1 px-2'><Link to={'/signup'}>Signup</Link ></li>
-                        } */}
+                        {
+                            !accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300 bg-red-800 active:bg-red-900 font-semibold rounded-sm py-1 px-1'><Link to={'/signup'}>Register</Link ></li>
+                        }
                     </div>
 
 
